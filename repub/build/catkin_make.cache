@@ -1,0 +1,2 @@
+livox_repub:livox_ros_driver
+-DCATKIN_DEVEL_PREFIX=/root/repub/devel -DCMAKE_INSTALL_PREFIX=/root/repub/install -G Unix Makefiles
