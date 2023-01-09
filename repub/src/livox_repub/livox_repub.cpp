@@ -41,14 +41,14 @@ void LivoxMsgCbk1(const livox_ros_driver::CustomMsgConstPtr& livox_msg_in) {
   pcl_ros_msg.header.frame_id = "/livox";
   pub_pcl_out1.publish(pcl_ros_msg);
 
-  pcl::PointCloud<pcl::PointXYZ> cloud;
+  pcl::PointCloud<PointType> cloud;
   pcl::fromROSMsg(pcl_ros_msg, cloud);
   std::stringstream ss;
 	ss << std::setw(4) << std::setfill('0') << tot++;
 	std::string pcd_path;
 	ss >> pcd_path;
   pcd_path = "/root/soft/livox/data/pcd/" + pcd_path + ".pcd";
-  pcl::io::savePCDFileASCII (pcd_path, cloud);
+  pcl::io::savePCDFileBinary(pcd_path, cloud);
 
   livox_data.clear();
 }
